@@ -1,7 +1,8 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/map"
-          tools:context="com.dentaltw.bootcamplocator.MapsActivity"
-          android:name="com.google.android.gms.maps.SupportMapFragment"/>
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+        xmlns:tools="http://schemas.android.com/tools" xmlns:android1="http://schemas.android.com/apk/res/android"
+        android1:layout_width="match_parent"
+        android1:layout_height="match_parent"
+        tools:context=".activities.MapsActivity">
+    <FrameLayout android1:layout_width="match_parent" android1:layout_height="match_parent" android1:id="@+id/container_main"></FrameLayout>
+</LinearLayout>
