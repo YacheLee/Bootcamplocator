@@ -17,10 +17,13 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 
 public class MapsActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks, LocationListener {
     final int PERMISSION_LOCATION = 111;
     private GoogleApiClient mGoogleApiClient;
+
+    private MainFragment mainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class MapsActivity extends FragmentActivity implements GoogleApiClient.On
                 .addApi(LocationServices.API)
                 .build();
 
-        MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.container_main);
+        mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.container_main);
         if (mainFragment == null) {
             mainFragment = MainFragment.newInstance();
             getSupportFragmentManager()
@@ -46,6 +49,7 @@ public class MapsActivity extends FragmentActivity implements GoogleApiClient.On
     @Override
     public void onLocationChanged(Location location) {
         Log.v("MAPS","Long: "+location.getLongitude()+" - Lat: "+location.getLatitude());
+        mainFragment.setUserMarker(new LatLng(location.getLatitude(), location.getLongitude()));
     }
 
     @Override
