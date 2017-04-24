@@ -7,12 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.dentaltw.bootcamplocator.R;
+import com.dentaltw.bootcamplocator.models.Develops;
+import com.dentaltw.bootcamplocator.services.DataService;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 public class MainFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -60,7 +65,20 @@ public class MainFragment extends Fragment implements OnMapReadyCallback {
             mMap.addMarker(userMarker);
             Log.v("MAPS","Current Location: "+latLng.latitude+" Long: "+latLng.longitude);
         }
-
+        updateMapForZip(92284);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+    }
+
+    private void updateMapForZip(int zipCode){
+        ArrayList<Develops> locations = DataService.getInstance().getData(zipCode);
+
+        for(Develops location: locations){
+            MarkerOptions marker = new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude()));
+            marker.title(location.getLocationTitle());
+            marker.snippet(location.getLocationAddress());
+            marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin));
+            mMap.addMarker(marker);
+        }
+        Log.v("MAPS","updateMapForZip");
     }
 }
