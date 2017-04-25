@@ -24,7 +24,7 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsViewHolder> 
 
     @Override
     public LocationsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View card = LayoutInflater.from(parent.getContext()).inflate(R.id.card_location, parent, false);
+        View card = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_location, parent, false);
         return new LocationsViewHolder(card);
     }
 
@@ -43,6 +43,6 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return locations.size();
     }
 }
