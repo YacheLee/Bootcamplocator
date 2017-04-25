@@ -11,6 +11,11 @@ public class Develops {
     private String locationAddress;
     private String locationImgUrl;
 
+    final String DRAWABLE = "drawable/";
+    public String getImageUrl(){
+        return DRAWABLE + locationImgUrl;
+    }
+
     public Develops(float longitude, float latitude, String locationTitle, String locationAddress, String locationImgUrl) {
         this.longitude = longitude;
         this.latitude = latitude;
