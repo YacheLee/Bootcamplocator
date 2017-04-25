@@ -21,6 +21,8 @@ public class DataService {
     public ArrayList<Develops> getData(int zipcode){
         ArrayList<Develops> list = new ArrayList<Develops>();
         list.add(new Develops(24.998240f, 121.573145f,"木柵捷運","356苗栗縣後龍鎮","slo"));
+        list.add(new Develops(24.998240f, 121.573145f,"木柵捷運","356苗栗縣後龍鎮","slo"));
+        list.add(new Develops(24.998240f, 121.573145f,"木柵捷運","356苗栗縣後龍鎮","slo"));
         return list;
     }
 }
